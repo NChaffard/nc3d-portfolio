@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageLayout from "../layouts/PageLayout.astro";
+
+// Récupère tous les articles
+const posts = await getCollection('blog');
+
+// Trie par date décroissante avec typage correct
+const sortedPosts = posts.sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => 
+  b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<BaseLayout pageTitle="Blog">
+  <PageLayout pageTitle="Blog">
+     <ul>
+    {sortedPosts.map((post: CollectionEntry<'blog'>) => (
+      <li>
+        <a href={`/blog/${post.id}`}>
+          {post.data.title}
+        </a>
+        <p>{post.data.description}</p>
+        <time>{post.data.date.toLocaleDateString('fr-FR')}</time>
+      </li>
+    ))}
+  </ul>
+  </PageLayout>
