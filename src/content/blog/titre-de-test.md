@@ -9,4 +9,6 @@ description: description du post
 
 paragraphe de texte
 
+![lion en plastique](/images/P1011242.jpg)
+
 paragraphe 2
