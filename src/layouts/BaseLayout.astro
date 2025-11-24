@@ -1,7 +1,6 @@
 ---
 import '../styles/reset.css';
 import '../styles/global.css';
-import Header from "../components/Header.astro";
 import Aside from '../components/Aside.astro';
 
 interface Props {
@@ -21,7 +20,6 @@ const { pageTitle = "Portfolio NC3D" } = Astro.props;
 		<title>{pageTitle}</title>
 	</head>
 	<body>
-		<Header />
 		<Aside />
 		<slot />
 	</body>
@@ -30,6 +28,8 @@ const { pageTitle = "Portfolio NC3D" } = Astro.props;
 <style>
 	body {
 		display: flex;
+		width: 100dvw;
+		max-width: 1600px;
 	}
 
 </style>

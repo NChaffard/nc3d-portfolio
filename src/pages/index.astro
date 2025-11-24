@@ -1,12 +1,13 @@
 ---
-import Home from '../components/Home.astro';
-import Layout from '../layouts/Layout.astro';
-const pageTitle = "Home";
+import IndexContent from "../components/IndexContent.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageLayout from "../layouts/PageLayout.astro";
+const pageTitle = "Accueil";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout pageTitle={pageTitle}>
-	<Home />
-</Layout>
+<BaseLayout pageTitle={pageTitle}>
+  <PageLayout pageTitle={pageTitle}>
+    <IndexContent />
+  </PageLayout>
+</BaseLayout>

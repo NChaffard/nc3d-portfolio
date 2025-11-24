@@ -1,6 +1,16 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+:root {
+    --primary-color: #1f1f1f;
+    --background-color: #ededed;
+    --accent-color: #ce7593;
+    --accent-color-2: #91d9ef;
+    /* Aside navigation */
+    --nav-bg-color: #818ca8;
+    --nav-bg-texture-color: rgba(31, 31, 31, 0.2);
+}
+
 *{
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
@@ -16,3 +26,44 @@ a{
     text-decoration: none;
     color: inherit;
 }
+h1{
+    text-align: left;
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -2px;
+}
+p{
+    line-height: 1.6;
+}
+
+
+
+/* reglages de base pour le svg */
+svg path {
+  fill: #ededed;
+  transition: fill 0.3s ease-in-out;
+}
+/* Gestion remplissage des icones en svg */
+.instagram-icon svg:hover path {
+    fill: #E1306C;
+}
+.facebook-icon svg:hover path {
+    fill: #381daf;
+}
+.mail-icon svg:hover path {
+    fill: #52b765;
+}
+/* Gestion remplissage du logo en svg */
+.pathn:hover{
+    fill: #ce7593;
+}
+.pathc:hover {
+    fill: #ce7593;
+}
+
+.path3d:hover {
+    fill: #91d9ef;
+}
+
+
+
