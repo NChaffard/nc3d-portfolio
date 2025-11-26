@@ -7,7 +7,7 @@ media_library:
   name: cloudinary
   config:
     cloud_name: dmfsurwf3
-    output_filename_only: false
+    api_key: YOUR_CLOUDINARY_API_KEY
 
 media_folder: "public/images"
 public_folder: "/images"
