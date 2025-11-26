@@ -10,3 +10,5 @@ featured: true
 Figurine imprimée en résine JamgHe.
 
 Modèle de Nomnom figures.
+
+Imprimante Saturn 4.
