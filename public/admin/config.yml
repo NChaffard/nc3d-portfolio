@@ -18,3 +18,17 @@ collections:
       - { label: "Description", name: "description", widget: "text" }
       - { label: "Miniature", name: "thumbnail", widget: "image", required: false }
       - { label: "Contenu", name: "body", widget: "markdown" }
+
+  - name: "projets"
+    label: "Projets"
+    folder: "src/content/projets"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Titre", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Image de couverture", name: "thumbnail", widget: "image" }
+      - { label: "Galerie d'images", name: "gallery", widget: "list", field: { label: "Image", name: "image", widget: "image" } }
+      - { label: "Projet mis en avant", name: "featured", widget: "boolean", default: false, required: false }
+      - { label: "Contenu", name: "body", widget: "markdown" }
