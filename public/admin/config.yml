@@ -1,7 +1,13 @@
 backend:
   name: github
-  repo: NChaffard/nc3d-portfolio 
+  repo: NChaffard/nc3d-portfolio
   branch: master
+
+media_library:
+  name: cloudinary
+  config:
+    cloud_name: dmfsurwf3
+    api_key: {{CLOUDINARY_API_KEY}}
 
 media_folder: "public/images"
 public_folder: "/images"
