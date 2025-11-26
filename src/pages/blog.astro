@@ -14,16 +14,27 @@ const sortedPosts = posts.sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'
 ---
 
 <BaseLayout pageTitle="Blog">
-  <PageLayout pageTitle="Blog">
-     <ul>
+  <PageLayout>
+    <h1 class="page-title">BLog</h1>
+     <ul class="blog-post-list">
     {sortedPosts.map((post: CollectionEntry<'blog'>) => (
-      <li>
         <a href={`/blog/${post.id}`}>
+      <li class="blog-post-item">
+        <h2>
           {post.data.title}
-        </a>
+        </h2>
         <p>{post.data.description}</p>
         <time>{post.data.date.toLocaleDateString('fr-FR')}</time>
       </li>
+        </a>
     ))}
   </ul>
   </PageLayout>
+  <style>
+    .blog-post-item{
+      padding: 15px 30px;
+      background-color: var(--nav-bg-color);
+      border-radius: 10px;
+      color: var(--background-color);
+      }
+  </style>

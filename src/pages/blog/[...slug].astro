@@ -1,0 +1,88 @@
+---
+import { getCollection, render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageLayout from "../../layouts/PageLayout.astro";
+
+// 1. G�n�re les routes statiques pour tous les posts
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+// 2. R�cup�re le post depuis les props
+const { post } = Astro.props as { post: CollectionEntry<"blog"> };
+
+// 3. Rend le contenu markdown en HTML
+const { Content } = await render(post);
+---
+
+<BaseLayout pageTitle={post.data.title}>
+  <PageLayout>
+    <article class="post-article">
+      <!-- M�tadonn�es du post -->
+      <header class="post-header">
+        <h1 class="page-title">{post.data.title}</h1>
+        <time datetime={post.data.date.toISOString()}>
+          {
+            post.data.date.toLocaleDateString("fr-FR", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })
+          }
+        </time>
+        {/* Affiche la miniature si elle existe */}
+        {
+          post.data.thumbnail && (
+            <img src={post.data.thumbnail} alt={post.data.title} />
+          )
+        }
+      </header>
+
+      <!-- Contenu du post -->
+      <div class="post-content">
+        <Content />
+      </div>
+
+      <!-- Lien retour -->
+      <footer class="post-footer">
+        <a href="/blog">Retour au blog</a>
+      </footer>
+    </article>
+  </PageLayout>
+</BaseLayout>
+<style>
+  .post-header {
+    margin-bottom: 20px;
+  }
+  .post-footer {
+    margin: 100px 0;
+  }
+  .post-footer a {
+    font-size: 1.5em;
+    background-color: var(--nav-bg-color);
+    color: var(--background-color);
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-image: repeating-linear-gradient(
+      45deg /* angle diagonal */,
+      var(--nav-bg-texture-color) /* couleur ligne */,
+      var(--nav-bg-texture-color) 1px /* épaisseur ligne */,
+      transparent 1px ,
+      transparent 6px /* taille tile */
+    );
+    background-size: 8px 8px; /* définit la taille de répétition */
+    transition: all 0.3s ease;
+  }
+  .post-footer a:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+  }
+  
+</style>

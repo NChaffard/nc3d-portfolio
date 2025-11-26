@@ -1,37 +1,63 @@
-/* Reset CSS de base */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-main, menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  vertical-align: baseline;
+/* ============================================
+   Modern CSS Reset - 2025
+   Basé sur Josh Comeau + bonnes pratiques modernes
+   ============================================ */
+
+/* 1. Box-sizing universel avec héritage */
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
-/* Pour remettre en place les éléments bloc HTML5 */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, main, menu, nav, section {
-  display: block;
+/* 2. Reset des marges et padding */
+* {
+  margin: 0;
+  padding: 0;
 }
 
-/* Autres resets classiques */
+/* 3. Configuration HTML/Body */
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+}
 
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
+/* 4. Médias responsive par défaut */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* 5. Héritage des fonts pour les inputs */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 6. Suppression des styles par défaut des boutons */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+/* 7. Reset des listes */
 ol, ul {
   list-style: none;
 }
 
+/* 8. Reset des liens (optionnel - à ajuster selon vos besoins) */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 9. Reset des citations */
 blockquote, q {
   quotes: none;
 }
@@ -42,7 +68,77 @@ q::before, q::after {
   content: none;
 }
 
+/* 10. Reset des tables */
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+/* 11. Éviter les débordements de texte */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* 12. Focus visible moderne (accessibilité) */
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* 13. Pour les éléments bloc HTML5 (support vieux navigateurs) */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main, menu, nav, section {
+  display: block;
+}
+
+/* 14. Amélioration du rendu des bordures */
+hr {
+  border: none;
+  border-top: 1px solid;
+  color: inherit;
+  height: 0;
+  overflow: visible;
+}
+
+/* 15. Reset des formulaires */
+fieldset {
+  border: 0;
+  padding: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+/* 16. Préférence de mouvement réduit (accessibilité) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 17. Amélioration du rendu du texte */
+body {
+  text-rendering: optimizeSpeed;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-rendering: optimizeLegibility;
+}
+
+/* 18. Reset du style par défaut pour les elements abbr */
+abbr[title] {
+  text-decoration: underline dotted;
+}
+
+/* 19. Fix pour les éléments cachés */
+[hidden] {
+  display: none !important;
 }

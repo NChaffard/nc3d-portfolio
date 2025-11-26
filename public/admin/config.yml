@@ -16,4 +16,5 @@ collections:
       - { label: "Titre", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Description", name: "description", widget: "text" }
+      - { label: "Miniature", name: "thumbnail", widget: "image", required: false }
       - { label: "Contenu", name: "body", widget: "markdown" }

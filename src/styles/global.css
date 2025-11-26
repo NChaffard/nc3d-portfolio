@@ -1,42 +1,55 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
-    --primary-color: #1f1f1f;
-    --background-color: #ededed;
-    --accent-color: #ce7593;
-    --accent-color-2: #91d9ef;
-    /* Aside navigation */
-    --nav-bg-color: #818ca8;
-    --nav-bg-texture-color: rgba(31, 31, 31, 0.2);
+  --font-dark: #2E1E0F;
+  --font-light: #ededed;
+  --primary-color: #1f1f1f;
+  --background-color: #ededed;
+  --accent-color: #D55672;
+  --accent-color-2: #9DFFF9;
+  /* Aside width */
+  --aside-width: 300px;
+  /* Aside navigation */
+  --nav-bg-color: #3F4876;
+  --nav-bg-texture-color: rgba(31, 31, 31, 0.2);
+  /* Icons colors */
+  --insta-icon: #c86388;
+  --fb-icon: #7494EA;
+  --mail-icon: #adc47d;
 }
 
-*{
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
+* {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
 }
 
-html{
-    background-color: #ededed;
-    color: #1f1f1f;
-   
+html {
+  background-color: #ededed;
+  color: #1f1f1f;
 }
-a{
-    text-decoration: none;
-    color: inherit;
+a {
+  text-decoration: none;
+  color: inherit;
 }
-h1{
-    text-align: left;
-    font-size: 3rem;
-    font-weight: 800;
-    letter-spacing: -2px;
+h1 {
+  text-align: left;
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -2px;
 }
-p{
-    line-height: 1.6;
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -1px;
 }
-
-
+p {
+  line-height: 1.6;
+  margin: 1rem 0;
+}
+p img {
+  max-width: 100%;
+  height: auto;
+}
 
 /* reglages de base pour le svg */
 svg path {
@@ -45,25 +58,28 @@ svg path {
 }
 /* Gestion remplissage des icones en svg */
 .instagram-icon svg:hover path {
-    fill: #E1306C;
+  fill: var(--insta-icon);
 }
 .facebook-icon svg:hover path {
-    fill: #381daf;
+  fill: var(--fb-icon);
 }
 .mail-icon svg:hover path {
-    fill: #52b765;
+  fill: var(--mail-icon);
 }
 /* Gestion remplissage du logo en svg */
-.pathn:hover{
-    fill: #ce7593;
+.pathn:hover {
+  fill: var(--accent-color);
 }
 .pathc:hover {
-    fill: #ce7593;
+  fill: var(--accent-color);
 }
 
 .path3d:hover {
-    fill: #91d9ef;
+  fill: var(--accent-color-2);
 }
 
-
-
+.page-title {
+  height: 200px;
+  display: flex;
+  align-items: center;
+}

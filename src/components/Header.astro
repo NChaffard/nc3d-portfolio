@@ -1,20 +1,23 @@
 ---
-interface Props {
-	pageTitle: string;
-}
-const { pageTitle = "Portfolio NC3D" } = Astro.props;
+import Navigation from "./Navigation.astro";
 ---
+
 <header class="header-container">
-<h1 class="header-title">
-    {pageTitle}
-</h1>
+  <Navigation />
 </header>
 <style>
-    .header-container {
-        width: 100%;
-        height: 200px;
-        display: flex;
-        align-items: center;
-
-    }
+  .header-container {
+    position: fixed;
+    height: 100dvh;
+    width: var(--aside-width);
+    background: var(--nav-bg-color);
+    background-image: repeating-linear-gradient(
+      45deg /* angle diagonal */,
+      var(--nav-bg-texture-color) /* couleur ligne */,
+      var(--nav-bg-texture-color) 1px /* épaisseur ligne */,
+      transparent 1px ,
+      transparent 6px /* taille tile */
+    );
+    background-size: 8px 8px; /* définit la taille de répétition */
+  }
 </style>

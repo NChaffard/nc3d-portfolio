@@ -1,20 +1,11 @@
 ---
-import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-
-interface Props {
-  pageTitle: string;
-}
-const { pageTitle = "Portfolio NC3D" } = Astro.props;
 ---
 
-<div class="page-container">
-  <Header pageTitle={pageTitle} />
-  <main>
-    <slot />
-  </main>
-  <Footer />
-</div>
+<main class="page-container">
+  <slot />
+</main>
+<Footer />
 
 <style>
   .page-container {
@@ -22,5 +13,5 @@ const { pageTitle = "Portfolio NC3D" } = Astro.props;
     flex-direction: column;
     width: 100%;
     padding: 0 40px;
-      }
+  }
 </style>
