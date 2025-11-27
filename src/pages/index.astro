@@ -3,10 +3,11 @@ import ProjetsMasonry from "../components/ProjetsMasonry.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageLayout from "../layouts/PageLayout.astro";
 const pageTitle = "Accueil";
+const pageDescription = "Bienvenue sur NC3D. Découvrez mes projets d'impression 3D, de découpe laser ainsi que mes compétences en conception assistée par ordinateur (CAO) et en prototypage rapide.";
 
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
   <PageLayout>
     <ProjetsMasonry />
   </PageLayout>

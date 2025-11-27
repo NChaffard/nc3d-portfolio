@@ -5,9 +5,11 @@ import Header from "../components/Header.astro";
 
 interface Props {
   pageTitle: string;
+  pageDescription: string;
 }
 
 const { pageTitle = "Portfolio NC3D" } = Astro.props;
+const { pageDescription = "Bienvenue sur NC3D" } = Astro.props;
 ---
 
 <!doctype html>
@@ -17,6 +19,7 @@ const { pageTitle = "Portfolio NC3D" } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={pageDescription} />
     <title>{pageTitle}</title>
   </head>
   <body>
@@ -36,5 +39,6 @@ const { pageTitle = "Portfolio NC3D" } = Astro.props;
   .main-container {
 	margin-left: var(--aside-width);
   min-height: 100dvh;
+  width: calc(100% - var(--aside-width));
   }
 </style>

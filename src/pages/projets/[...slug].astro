@@ -17,7 +17,7 @@ const { projet } = Astro.props as { projet: CollectionEntry<'projets'> };
 const { Content } = await render(projet);
 ---
 
-<BaseLayout pageTitle={projet.data.title}>
+<BaseLayout pageTitle={projet.data.title} pageDescription={projet.data.description}>
   <PageLayout>
     <article class="projet-detail">
       <header class="projet-header">

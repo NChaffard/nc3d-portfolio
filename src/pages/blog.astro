@@ -1,98 +1,14 @@
 ---
-import { getCollection } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageLayout from "../layouts/PageLayout.astro";
+import BlogList from "../components/BlogList.astro";
 
-// Récupère tous les articles
-const posts = await getCollection('blog');
-
-// Trie par date décroissante avec typage correct
-const sortedPosts = posts.sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) =>
-  b.data.date.valueOf() - a.data.date.valueOf()
-);
+const pageTitle = "Blog";
+const pageDescription = "Découvrez les derniers articles concernant mon activité.";
 ---
 
-<BaseLayout pageTitle="Blog">
+<BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
   <PageLayout>
-    <h1 class="page-title">Blog</h1>
-    <div class="blog-list">
-      {sortedPosts.map((post: CollectionEntry<'blog'>) => (
-        <article class="blog-card">
-          <a href={`/blog/${post.id}`} class="blog-card-link">
-            <div class="blog-card-content">
-              <h2 class="blog-title">{post.data.title}</h2>
-              <p class="blog-description">{post.data.description}</p>
-              <time class="blog-date" datetime={post.data.date.toISOString()}>
-                {post.data.date.toLocaleDateString('fr-FR', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric'
-                })}
-              </time>
-            </div>
-          </a>
-        </article>
-      ))}
-    </div>
+    <BlogList />
   </PageLayout>
 </BaseLayout>
-
-<style>
-  .blog-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .blog-card {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .blog-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-  }
-
-  .blog-card-link {
-    display: block;
-    padding: 2rem;
-    color: var(--primary-color);
-  }
-
-  .blog-title {
-    margin: 0 0 0.75rem 0;
-    color: var(--nav-bg-color);
-    font-size: 1.5rem;
-    font-weight: 700;
-    line-height: 1.3;
-  }
-
-  .blog-description {
-    margin: 0 0 1rem 0;
-    color: #555;
-    line-height: 1.6;
-  }
-
-  .blog-date {
-    display: block;
-    font-size: 0.875rem;
-    color: #888;
-    font-weight: 500;
-  }
-
-  @media (max-width: 768px) {
-    .blog-card-link {
-      padding: 1.5rem;
-    }
-
-    .blog-title {
-      font-size: 1.25rem;
-    }
-  }
-</style>

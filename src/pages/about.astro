@@ -4,9 +4,10 @@ import PageLayout from "../layouts/PageLayout.astro";
 import AboutContent from "../components/AboutContent.astro";
 
 const pageTitle = "A Propos";
+const pageDescription = "En savoir plus sur NC3D, mes compétences en impression 3D, découpe laser, conception assistée par ordinateur (CAO) et prototypage rapide.";
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
   <PageLayout pageTitle={pageTitle}>
     <AboutContent />
   </PageLayout>

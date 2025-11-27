@@ -21,7 +21,7 @@ const { post } = Astro.props as { post: CollectionEntry<"blog"> };
 const { Content } = await render(post);
 ---
 
-<BaseLayout pageTitle={post.data.title}>
+<BaseLayout pageTitle={post.data.title} pageDescription={post.data.description}>
   <PageLayout>
     <article class="post-article">
       <header class="post-header">
@@ -48,7 +48,7 @@ const { Content } = await render(post);
       </section>
 
       <nav class="post-nav">
-        <a href="/" class="back-link">← Retour à l'accueil</a>
+        <a href="/blog" class="back-link">← Retour aux articles</a>
       </nav>
     </article>
   </PageLayout>
@@ -56,9 +56,7 @@ const { Content } = await render(post);
 
 <style>
   .post-article {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
+    padding: 2rem 0;
   }
 
   .post-header {
