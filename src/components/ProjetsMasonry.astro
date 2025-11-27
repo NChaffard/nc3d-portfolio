@@ -11,7 +11,7 @@ const projets = (await getCollection('projets')).sort(
     {projets.map((projet) => (
       <a href={`/projets/${projet.id}`} class="projet-card">
         <div class="projet-image">
-          <img src={projet.data.thumbnail} alt={projet.data.title} loading="lazy" />
+          <img src={projet.data.thumbnail.image} alt={projet.data.thumbnail.alt} loading="lazy" />
           {projet.data.featured && <span class="featured-badge">★ En vedette</span>}
           <div class="projet-overlay">
             <div class="projet-info">

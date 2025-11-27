@@ -20,7 +20,10 @@ const projets = defineCollection({
     title: z.string(),
     date: z.coerce.date(),
     description: z.string(),
-    thumbnail: z.string(),
+    thumbnail: z.object({
+      image: z.string(),
+      alt: z.string(),
+    }),
     gallery: z.array(z.object({
       image: z.string(),
       alt: z.string(),
