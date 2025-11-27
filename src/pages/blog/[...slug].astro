@@ -4,7 +4,7 @@ import type { CollectionEntry } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageLayout from "../../layouts/PageLayout.astro";
 
-// 1. G�n�re les routes statiques pour tous les posts
+// 1. Génère les routes statiques pour tous les posts
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
 
@@ -14,7 +14,7 @@ export async function getStaticPaths() {
   }));
 }
 
-// 2. R�cup�re le post depuis les props
+// 2. Récupère le post depuis les props
 const { post } = Astro.props as { post: CollectionEntry<"blog"> };
 
 // 3. Rend le contenu markdown en HTML
@@ -24,10 +24,9 @@ const { Content } = await render(post);
 <BaseLayout pageTitle={post.data.title}>
   <PageLayout>
     <article class="post-article">
-      <!-- M�tadonn�es du post -->
       <header class="post-header">
-        <h1 class="page-title">{post.data.title}</h1>
-        <time datetime={post.data.date.toISOString()}>
+        <h1>{post.data.title}</h1>
+        <p class="post-meta">
           {
             post.data.date.toLocaleDateString("fr-FR", {
               year: "numeric",
@@ -35,54 +34,162 @@ const { Content } = await render(post);
               day: "numeric",
             })
           }
-        </time>
-        {/* Affiche la miniature si elle existe */}
-        {
-          post.data.thumbnail && (
-            <img src={post.data.thumbnail.image} alt={post.data.thumbnail.alt} />
-          )
-        }
+        </p>
       </header>
 
-      <!-- Contenu du post -->
-      <div class="post-content">
-        <Content />
-      </div>
+      {post.data.thumbnail && (
+        <section class="post-thumbnail">
+          <img src={post.data.thumbnail.image} alt={post.data.thumbnail.alt} />
+        </section>
+      )}
 
-      <!-- Lien retour -->
-      <footer class="post-footer">
-        <a href="/blog">Retour au blog</a>
-      </footer>
+      <section class="post-content">
+        <Content />
+      </section>
+
+      <nav class="post-nav">
+        <a href="/" class="back-link">← Retour à l'accueil</a>
+      </nav>
     </article>
   </PageLayout>
 </BaseLayout>
+
 <style>
+  .post-article {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
   .post-header {
-    margin-bottom: 20px;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    text-align: center;
   }
-  .post-footer {
-    margin: 100px 0;
+
+  .post-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #333;
   }
-  .post-footer a {
-    font-size: 1.5em;
-    background-color: var(--nav-bg-color);
-    color: var(--background-color);
-    padding: 10px 15px;
-    border-radius: 10px;
-    border: 2px solid transparent;
-    background-image: repeating-linear-gradient(
-      45deg /* angle diagonal */,
-      var(--nav-bg-texture-color) /* couleur ligne */,
-      var(--nav-bg-texture-color) 1px /* épaisseur ligne */,
-      transparent 1px ,
-      transparent 6px /* taille tile */
-    );
-    background-size: 8px 8px; /* définit la taille de répétition */
-    transition: all 0.3s ease;
+
+  .post-meta {
+    color: #666;
+    font-size: 0.938rem;
+    margin-bottom: 1rem;
+    text-align: start;
   }
-  .post-footer a:hover {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
+
+  .post-thumbnail {
+    margin-bottom: 3rem;
   }
-  
+
+  .post-thumbnail img {
+    width: 100%;
+    height: auto;
+  }
+
+  .post-content {
+    margin-bottom: 3rem;
+  }
+
+  .post-content :global(h2) {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+
+  .post-content :global(h3) {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  .post-content :global(p) {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    color: #555;
+  }
+
+  .post-content :global(ul),
+  .post-content :global(ol) {
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+  }
+
+  .post-content :global(li) {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+
+  .post-content :global(a) {
+    color: #0066cc;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+  }
+
+  .post-content :global(a:hover) {
+    color: #004499;
+  }
+
+  .post-content :global(blockquote) {
+    margin: 1.5rem 0;
+    padding: 1rem 1.5rem;
+    border-left: 4px solid var(--accent-color);
+    background: #f8f9fa;
+    font-style: italic;
+  }
+
+  .post-content :global(code) {
+    padding: 0.2em 0.4em;
+    background: #f1f3f5;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-family: 'Courier New', monospace;
+  }
+
+  .post-content :global(pre) {
+    margin: 1.5rem 0;
+    padding: 1.25rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    overflow-x: auto;
+  }
+
+  .post-content :global(pre code) {
+    padding: 0;
+    background: none;
+  }
+
+  .post-content :global(img) {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+  }
+
+  .post-nav {
+    padding-top: 2rem;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .back-link {
+    display: inline-block;
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .back-link:hover {
+    color: #004499;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .post-header h1 {
+      font-size: 2rem;
+    }
+  }
 </style>
