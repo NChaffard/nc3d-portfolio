@@ -67,7 +67,7 @@ svg path {
   fill: var(--mail-icon);
 }
 /* Gestion remplissage du logo en svg */
-.pathn:hover {
+/* .pathn:hover {
   fill: var(--accent-color);
 }
 .pathc:hover {
@@ -76,7 +76,7 @@ svg path {
 
 .path3d:hover {
   fill: var(--accent-color-2);
-}
+} */
 
 .page-title {
   height: 200px;

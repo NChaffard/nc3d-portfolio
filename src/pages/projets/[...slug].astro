@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageLayout from '../../layouts/PageLayout.astro';
 
@@ -34,12 +35,15 @@ const { Content } = await render(projet);
         <div class="gallery-grid">
           {projet.data.gallery.map((item: { image: string; alt: string }, index: number) => (
             <div class="gallery-item">
-              <img
+              <Image
                 src={item.image}
                 alt={item.alt}
-                loading="lazy"
                 class="gallery-image"
                 data-index={index}
+                width={800}
+                height={600}
+                quality={80}
+                loading="lazy"
               />
             </div>
           ))}
@@ -332,6 +336,7 @@ const { Content } = await render(projet);
   function showImage(index) {
     currentIndex = index;
     const item = gallery[index];
+    // Utiliser l'image originale en haute qualité pour la modale
     modalImg.src = item.image;
     modalImg.alt = item.alt;
     modalCaption.textContent = item.alt;
