@@ -7,23 +7,24 @@ const projets = (await getCollection('projets')).sort(
 ---
 
 <section class="projets-section">
-  <h2>Mes Projets</h2>
   <div class="masonry-grid">
     {projets.map((projet) => (
       <a href={`/projets/${projet.id}`} class="projet-card">
         <div class="projet-image">
           <img src={projet.data.thumbnail} alt={projet.data.title} loading="lazy" />
           {projet.data.featured && <span class="featured-badge">★ En vedette</span>}
-        </div>
-        <div class="projet-info">
-          <h3>{projet.data.title}</h3>
-          <p class="projet-date">
-            {projet.data.date.toLocaleDateString('fr-FR', {
-              year: 'numeric',
-              month: 'long'
-            })}
-          </p>
-          <p class="projet-description">{projet.data.description}</p>
+          <div class="projet-overlay">
+            <div class="projet-info">
+              <h3>{projet.data.title}</h3>
+              <p class="projet-date">
+                {projet.data.date.toLocaleDateString('fr-FR', {
+                  year: 'numeric',
+                  month: 'long'
+                })}
+              </p>
+              <p class="projet-description">{projet.data.description}</p>
+            </div>
+          </div>
         </div>
       </a>
     ))}
@@ -35,28 +36,22 @@ const projets = (await getCollection('projets')).sort(
     padding: 2rem 0;
   }
 
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-
   .masonry-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
-    grid-auto-rows: 10px;
+    column-count: 3;
+    column-gap: 1.5rem;
   }
 
   .projet-card {
-    display: block;
-    background: white;
-    border-radius: 8px;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 1.5rem;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-decoration: none;
     color: inherit;
+    break-inside: avoid;
+    page-break-inside: avoid;
   }
 
   .projet-card:hover {
@@ -87,41 +82,62 @@ const projets = (await getCollection('projets')).sort(
     border-radius: 20px;
     font-size: 0.875rem;
     font-weight: 600;
+    z-index: 2;
+  }
+
+  .projet-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 1.5rem;
+  }
+
+  .projet-card:hover .projet-overlay {
+    opacity: 1;
   }
 
   .projet-info {
-    padding: 1rem;
+    text-align: center;
+    color: white;
   }
 
   .projet-info h3 {
     margin: 0 0 0.5rem 0;
     font-size: 1.25rem;
-    color: #333;
+    color: white;
   }
 
   .projet-date {
-    margin: 0 0 0.5rem 0;
+    margin: 0 0 0.75rem 0;
     font-size: 0.875rem;
-    color: #666;
+    color: #ddd;
   }
 
   .projet-description {
     margin: 0;
     font-size: 0.938rem;
-    color: #555;
+    color: #eee;
     line-height: 1.5;
   }
 
   /* Responsive adjustments */
   @media (max-width: 768px) {
     .masonry-grid {
-      grid-template-columns: 1fr;
+      column-count: 1;
     }
   }
 
   @media (min-width: 769px) and (max-width: 1024px) {
     .masonry-grid {
-      grid-template-columns: repeat(2, 1fr);
+      column-count: 2;
     }
   }
 </style>
