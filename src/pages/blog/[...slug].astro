@@ -39,7 +39,7 @@ const { Content } = await render(post);
         {/* Affiche la miniature si elle existe */}
         {
           post.data.thumbnail && (
-            <img src={post.data.thumbnail} alt={post.data.title} />
+            <img src={post.data.thumbnail.image} alt={post.data.thumbnail.alt} />
           )
         }
       </header>

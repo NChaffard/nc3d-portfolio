@@ -34,9 +34,9 @@ const { Content } = await render(projet);
       <section class="projet-gallery">
         <h2>Galerie</h2>
         <div class="gallery-grid">
-          {projet.data.gallery.map((image: string) => (
+          {projet.data.gallery.map((item: { image: string; alt: string }) => (
             <div class="gallery-item">
-              <img src={image} alt={`${projet.data.title} - image`} loading="lazy" />
+              <img src={item.image} alt={item.alt} loading="lazy" />
             </div>
           ))}
         </div>
