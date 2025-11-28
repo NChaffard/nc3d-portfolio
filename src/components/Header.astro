@@ -20,4 +20,15 @@ import Navigation from "./Navigation.astro";
     );
     background-size: 8px 8px; /* définit la taille de répétition */
   }
+
+  /* Version mobile horizontale */
+  @media (max-width: 768px) {
+    .header-container {
+      height: 70px;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+  }
 </style>

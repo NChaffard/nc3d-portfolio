@@ -37,8 +37,17 @@ const { pageDescription = "Bienvenue sur NC3D" } = Astro.props;
     max-width: 1600px;
   }
   .main-container {
-	margin-left: var(--aside-width);
-  min-height: 100dvh;
-  width: calc(100% - var(--aside-width));
+    margin-left: var(--aside-width);
+    min-height: 100dvh;
+    width: calc(100% - var(--aside-width));
+  }
+
+  /* Version mobile */
+  @media (max-width: 768px) {
+    .main-container {
+      margin-left: 0;
+      margin-top: 70px;
+      width: 100%;
+    }
   }
 </style>
