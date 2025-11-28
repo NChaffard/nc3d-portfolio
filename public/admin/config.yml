@@ -48,3 +48,14 @@ collections:
           - { label: "Texte alternatif", name: "alt", widget: "string" }
       - { label: "Projet mis en avant", name: "featured", widget: "boolean", default: false, required: false }
       - { label: "Contenu", name: "body", widget: "markdown" }
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Page A Propos"
+        name: "about"
+        file: "src/content/pages/about.json"
+        fields:
+          - { label: "Titre", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Contenu", name: "content", widget: "markdown" }

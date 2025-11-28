@@ -1,20 +1,16 @@
 ---
+import aboutData from "../content/pages/about.json";
+
+// Convertir le markdown en HTML (simple conversion avec sauts de ligne)
+const contentHtml = aboutData.content.split('\n\n').map(p => `<p>${p}</p>`).join('\n    ');
 ---
 <article class="about-content">
   <header class="about-header">
-    <h1>A propos</h1>
+    <h1>{aboutData.title}</h1>
   </header>
 
   <section class="about-section">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi reprehenderit accusantium hic, optio libero minima nesciunt quisquam. Voluptatum consequuntur quod molestiae molestias suscipit eveniet? Quo iusto tempora ullam commodi saepe!</p>
-
-    <p>Nihil ipsa maxime veniam illum, praesentium minus aut fugiat. Eligendi totam quibusdam expedita perferendis alias iure dignissimos sed dolores. Voluptatibus fugiat quibusdam ullam facere adipisci velit quos debitis totam illo?</p>
-
-    <p>Voluptatem doloremque aut animi eum sint aliquam earum commodi blanditiis officiis rem delectus ratione officia, ad voluptas, quo, vel at quod magni labore debitis error. Corrupti, dolor harum! Labore, ratione.</p>
-
-    <p>Voluptatem suscipit obcaecati vero mollitia rerum consequatur amet aperiam recusandae ipsam repellat, nostrum incidunt sint, nisi quam enim quod ipsum perspiciatis ratione ex, voluptas natus velit eius! Consectetur, ipsum velit!</p>
-
-    <p>Exercitationem aliquam aut sunt tenetur culpa dolore dignissimos sapiente, delectus, maiores modi optio, quo illo velit voluptas vel temporibus laudantium quibusdam sint enim vero est repudiandae veritatis a ducimus! Amet.</p>
+    <Fragment set:html={contentHtml} />
   </section>
 </article>
 
