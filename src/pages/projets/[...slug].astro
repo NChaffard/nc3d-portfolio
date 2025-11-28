@@ -35,16 +35,28 @@ const { Content } = await render(projet);
         <div class="gallery-grid">
           {projet.data.gallery.map((item: { image: string; alt: string }, index: number) => (
             <div class="gallery-item">
-              <Image
-                src={item.image}
-                alt={item.alt}
-                class="gallery-image"
-                data-index={index}
-                width={800}
-                height={600}
-                quality={80}
-                loading="lazy"
-              />
+              {item.image.startsWith('http') ? (
+                <img
+                  src={item.image}
+                  alt={item.alt}
+                  class="gallery-image"
+                  data-index={index}
+                  width={800}
+                  height={600}
+                  loading="lazy"
+                />
+              ) : (
+                <Image
+                  src={item.image}
+                  alt={item.alt}
+                  class="gallery-image"
+                  data-index={index}
+                  width={800}
+                  height={600}
+                  quality={80}
+                  loading="lazy"
+                />
+              )}
             </div>
           ))}
         </div>

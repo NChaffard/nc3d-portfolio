@@ -12,14 +12,22 @@ const projets = (await getCollection('projets')).sort(
     {projets.map((projet) => (
       <a href={`/projets/${projet.id}`} class="projet-card">
         <div class="projet-image">
-          <Image
-            src={projet.data.thumbnail.image}
-            alt={projet.data.thumbnail.alt}
-            width={600}
-            height={400}
-            quality={80}
-            loading="lazy"
-          />
+          {projet.data.thumbnail.image.startsWith('http') ? (
+            <img
+              src={projet.data.thumbnail.image}
+              alt={projet.data.thumbnail.alt}
+              loading="lazy"
+            />
+          ) : (
+            <Image
+              src={projet.data.thumbnail.image}
+              alt={projet.data.thumbnail.alt}
+              width={600}
+              height={400}
+              quality={80}
+              loading="lazy"
+            />
+          )}
           {projet.data.featured && <span class="featured-badge">★ En vedette</span>}
           <div class="projet-overlay">
             <div class="projet-info">
@@ -73,7 +81,8 @@ const projets = (await getCollection('projets')).sort(
     overflow: hidden;
   }
 
-  .projet-image img {
+  .projet-image img,
+  .projet-image :global(img) {
     width: 100%;
     height: auto;
     display: block;
