@@ -10,7 +10,7 @@ const blog = defineCollection({
     thumbnail: z.object({
       image: z.string(),
       alt: z.string(),
-    }).optional(),
+    }),
   }),
 });
 
