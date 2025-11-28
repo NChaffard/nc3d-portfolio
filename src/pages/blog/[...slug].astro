@@ -56,7 +56,9 @@ const { Content } = await render(post);
 
 <style>
   .post-article {
-    padding: 2rem 0;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
   }
 
   .post-header {
@@ -85,6 +87,8 @@ const { Content } = await render(post);
   .post-thumbnail img {
     width: 100%;
     height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 
   .post-content {
