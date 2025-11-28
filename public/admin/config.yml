@@ -19,7 +19,7 @@ collections:
       - label: "Miniature"
         name: "thumbnail"
         widget: "object"
-        required: false
+        required: true
         fields:
           - { label: "Image", name: "image", widget: "image" }
           - { label: "Texte alternatif", name: "alt", widget: "string" }
